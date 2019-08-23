@@ -126,7 +126,7 @@
             Assert.AreEqual(initWater.FractionFull, 0.5);
             Assert.AreEqual(initWater.PercentMethod, InitialWater.PercentMethodEnum.FilledFromTop);
 
-            Water w = s.Children[1] as Water;
+            Physical w = s.Children[1] as Physical;
             Assert.AreEqual(w.Thickness, new double[] { 150, 150, 300, 300 });
             Assert.AreEqual(w.BD, new double[] { 1.02, 1.03, 1.02, 1.02 });
             Assert.AreEqual(w.LL15, new double[] { 0.29, 0.29, 0.29, 0.29 });
@@ -141,12 +141,12 @@
 
             Assert.IsTrue(s.Children[3] is SoilNitrogen);
 
-            SoilOrganicMatter som = s.Children[4] as SoilOrganicMatter;
+            Organic som = s.Children[4] as Organic;
             Assert.AreEqual(som.Thickness, new double[] { 150, 150, 300, 300 });
-            Assert.AreEqual(som.OC, new double[] { 1.04, 0.89, 0.89, 0.89 });
+            Assert.AreEqual(som.Carbon, new double[] { 1.04, 0.89, 0.89, 0.89 });
             Assert.AreEqual(som.FBiom, new double[] { 0.025, 0.02, 0.015, 0.01});
 
-            Analysis a = s.Children[5] as Analysis;
+            Chemical a = s.Children[5] as Chemical;
             Assert.AreEqual(a.Thickness, new double[] { 150, 150, 300, 300 });
             Assert.AreEqual(a.NO3N, new double[] { 6.5, 2.1, 2.1, 1.0 });
             Assert.AreEqual(a.NH4N, new double[] { 0.5, 0.1, 0.1, 0.2 });

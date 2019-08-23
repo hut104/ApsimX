@@ -196,11 +196,6 @@ namespace Models.PMF.OilPalm
             get { return cover_green + (1 - cover_green) * UnderstoryCoverGreen; }
                 }
 
-        /// <summary>Amount of rainfall intercepted by the plant canopy</summary>
-        [Units("mm")]
-        public double interception = 0.0;
-
-
         /// <summary>Gets or sets the understory cover maximum.</summary>
         /// <value>The understory cover maximum.</value>
         [Description("Maximum understory cover (0-1)")]
@@ -211,11 +206,6 @@ namespace Models.PMF.OilPalm
         [Description("Fraction of understory that is legume (0-1)")]
         [Units("0-1")]
         public double UnderstoryLegumeFraction { get; set; }
-        /// <summary>Gets or sets the interception fraction.</summary>
-        /// <value>The interception fraction.</value>
-        [Description("Fraction of rainfall intercepted by canopy (0-1)")]
-        [Units("0-1")]
-        public double InterceptionFraction { get; set; }
         /// <summary>Gets or sets the maximum root depth.</summary>
         /// <value>The maximum root depth.</value>
         [Description("Maximum palm root depth (mm)")]
@@ -839,16 +829,6 @@ namespace Models.PMF.OilPalm
                 Sowing.Invoke(this, new EventArgs());
         }
 
-        // The following event handler will be called each day at the beginning of the day
-        /// <summary>Called when [do daily initialisation].</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        [EventSubscribe("DoDailyInitialisation")]
-        private void OnDoDailyInitialisation(object sender, EventArgs e)
-        {
-            interception = MetData.Rain * Math.Min(InterceptionFraction,1.0);
-        }
-
         /// <summary>Called when [do plant growth].</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
@@ -1207,10 +1187,7 @@ namespace Models.PMF.OilPalm
                 Fvpd = Math.Max(0.0, 1 - (VPD - 18) / (50 - 18));
 
 
-            PEP = (Soil.SoilWater as SoilWater).Eo * cover_green*Math.Min(Fn, Fvpd) - interception;
-            // interception losses may be greater than PEP - so check if PEP is negative.
-            // Any unevaporated interception losses are discarded - ie assume these evaporate at night etc
-            PEP = Math.Max(0.0, PEP);
+            PEP = (Soil.SoilWater as SoilWater).Eo * cover_green*Math.Min(Fn, Fvpd);
 
 
             for (int j = 0; j < Soil.LL15mm.Length; j++)
