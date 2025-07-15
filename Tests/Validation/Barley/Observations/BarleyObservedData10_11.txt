@@ -1,4 +1,4 @@
-SimulationName	Clock.Today	Barley.Grain.Wt	Barley.AboveGround.Wt	Barley.Leaf.LAI	Barley.Leaf.SLA	Barley.Spike.Wt	Barley.Leaf.Live.Wt	Barley.Leaf.Dead.Wt	Barley.Stem.Wt	Barley.Ear.Wt	Barley.Phenology.CurrentStageName
+SimulationName	Clock.Today	Barley.Grain.Wt	Barley.AboveGround.Wt	Barley.Leaf.LAI	Barley.Leaf.SpecificAreaCanopy	Barley.Spike.Wt	Barley.Leaf.Live.Wt	Barley.Leaf.Dead.Wt	Barley.Stem.Wt	Barley.Ear.Wt	Barley.Phenology.CurrentStageName
 MCPD10_11CultBooma	6/10/2010	0	38.9	0.533079543	17587.24974	0	30.18161458	0	8.718385423	0	
 MCPD10_11CultBooma	20/10/2010	0	111.4833333	1.296978208	15922.56837	0	80.8485158	0	30.63481753	0	
 MCPD10_11CultBooma	2/11/2010	0	306.5	2.276817502	16969.84866	0	133.4465762	0	173.0534238	0	
